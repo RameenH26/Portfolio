@@ -124,3 +124,8 @@ a {
     color:fuchsia;
 }
 
+#writings a{
+    text-shadow: none !important;
+    text-decoration: underline !important;
+    color: blue !important
+}
