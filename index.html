@@ -1,72 +1,57 @@
+<!--created by prashant shukla-->
+<!DOCTYPE html>
 <html>
-<head>
-<title>Tim Berners-Lee</title>  
-<link rel= "stylesheet" href= "main.css">
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Roboto&display=swap" rel="stylesheet">
-</head>    
-    
+    <head>
+        <title>Ping Pong</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+     
+        <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/addons/p5.sound.min.js"></script>   
+
+    </head>
     <body>
-        <ul class="menu">
-            <li class="links"><a href="#welcome">Home</a></li>
-            <li class="links"><a href="#videos">My Videos</a></li>
-            <li class="links"><a href="#work">Work</a></li>
-            <li class="links"><a href="#writings">Writings</a></li>
-            <li class="links"><a href="#contacts">Contacts</a></li>
-        </ul>
+        <center>
+            <div class="btn btn-primary heading">
+                <h2>AI Ping Pong</h2>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">How to play?</button>
+              </div>
+<br><br>
+              <button class="btn btn-danger" onclick="startGame()" id="start">Play Game</button>
+              <br><br>
         
-        <section id="welcome" >
-            <div class= "parallax-inner">
-            <img class="profile" src= "tim.jpg">
-                <h1>I am</h1>
-                <h1 id= "name">Tim Berners-Lee</h1>
-                <h2>I am the founder of www (World Wide Web)</h2>
-            </div>
-        </section>
-        <section id="bio">
-            <h1>Hi!</h1>
-            <div class="line"></div>
-                <p>Sir Timothy John Berners-Lee OM KBE FRS FREng FRSA FBCS (born 8 June 1955), also known as TimBL, is an English computer scientist best known as the inventor of the World Wide Web. He is a Professorial Fellow of Computer Science at the University of Oxford and a professor at the Massachusetts Institute of Technology (MIT). Berners-Lee proposed an information management system on 12 March 1989, then implemented the first successful communication between a Hypertext Transfer Protocol (HTTP) client and server via the Internet in mid-November. Berners-Lee is the director of the World Wide Web Consortium (W3C) which oversees the continued development of the Web. He is also the founder of the World Wide Web Foundation and is a senior researcher and holder of the 3Com founders chair at the MIT Computer Science and Artificial Intelligence Laboratory (CSAIL). He is a director of the Web Science Research Initiative (WSRI) and a member of the advisory board of the MIT Center for Collective Intelligence. In 2011, he was named as a member of the board of trustees of the Ford Foundation. He is a founder and president of the Open Data Institute and is currently an advisor at social network MeWe.</p>
-            
-        </section>
+              <h3 id="status" class="btn btn-warning"></h3>
+              <br><br>
         
-        <section id="videos">
-            <h1>Videos</h1>
-            <div class="line"></div>
-            <iframe width="700" height="394" src="https://www.youtube.com/embed/OM6XIICm_qo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <br>
-            <br>
-            <iframe width="700" height="394" src="https://www.youtube.com/embed/J8hzJxb0rpc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </section>
+              <div id="canvas"></div>
+
+              <br><br>
+              <h2 id="restart" class="btn btn-success" onclick="restart()">Restart</h2>
+
+              <div id="myModal" class="modal fade">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button class="close" data-dismiss="modal">&times;</button>
+                      <h3>How to play?</h3>
+                      <hr style="border: 1px solid black; background-color: black;">
+                    </div>
         
-        <section id="work">
-            <h1>Work</h1>
-            <div class="line"></div>
-            <iframe width="1000" height="400" src="https://en.wikipedia.org/wiki/Tim_Berners-Lee#Career_and_research" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </section>
-        
-        <section id="writings">
-            <h1>Writings</h1>
-            <div class="line"></div>
-            <a class="article" href="https://webfoundation.org/2019/03/web-birthday-30/" target="_blank">30 years on, what's next ForTheWeb</a>
-            <br>
-            <a class="article" href="https://interestingengineering.com/how-did-tim-berners-lee-change-the-world-with-the-world-wide-web#:~:text=Tim%20Berners%2DLee%20is%20often,of%20domains%20to%20the%20mix." target="_blank">How did Tim Berners-Lee change the world with the World Wide Web?</a>
-        </section>
-        <br>
-        <br>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2899.0934341975158!2d-79.76344888451052!3d43.395976479130994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b60a2720477d5%3A0xeb39d043b17c42af!2sWhite%20Hat%20Corporation!5e0!3m2!1sen!2sus!4v1610061203241!5m2!1sen!2sus" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-        <section id="contacts">
-            <h1>Contacts</h1>
-            <div class="line"></div>
-            <div class="contact_1">
-                <a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJvqsPsGczXsMCvTGvzxCPWFvtDLSmPhFpKbjxLdVgNtxnsSxVjFcqvhDSKqpgzhTfsdJQq" target="_blank">rameen.hum@gmail.com</a>
+                    <div class="modal-body">
                 
-                <br>
-                <br>
-                <a href="https://www.instagram.com/">Instagram</a>                
-            </div>
-        </section>
-        
-        
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="footer">
+                  <h2 class="btn btn-primary">Made By : Rameen H.</h2>
+              </div>
+        </center>
+        <script src="main.js"></script>
     </body>
 </html>

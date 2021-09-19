@@ -1,0 +1,21 @@
+body
+{
+    background-color: black;
+}
+.heading{
+    width: 100%;
+    text-align: left;
+}
+.heading h2{
+    display: inline;
+}
+.heading button{
+    float: right;
+    border: 1px solid white;
+}
+.footer h2{
+    color: white;
+    width: 100% !important;
+    position: sticky;
+    font-size: 20px;
+}
