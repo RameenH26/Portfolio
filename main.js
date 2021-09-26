@@ -25,6 +25,7 @@ var ball = {
 rightWristX = 0;
 rightWristY = 0;
 rightWristScore = 0;
+gameStatus = "";
 
 function setup(){
   var canvas =  createCanvas(700,600);
@@ -51,7 +52,15 @@ function gotPoses(results) {
   }
 }
 
+function startGame() {
+  gameStatus = "start";
+  document.getElementById("status").innerHTML = "Game Loaded";
+}
+
 function draw(){
+  if(gameStatus == "start") {
+    
+  }
 
  background(0); 
 
@@ -162,7 +171,7 @@ if(pcscore ==4){
     fill("white");
     stroke("white");
     textSize(25)
-    text("Game Over!☹☹",width/2,height/2);
+    text("Game Over!",width/2,height/2);
     text("Reload The Page!",width/2,height/2+30)
     noLoop();
     pcscore = 0;
